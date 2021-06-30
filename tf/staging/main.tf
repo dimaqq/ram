@@ -33,6 +33,13 @@ resource "aws_athena_workgroup" "research_ram" {
   }
 }
 
+resource "aws_athena_named_query" "test_iris" {
+  name = "test-iris"
+  workgroup = aws_athena_workgroup.research_ram.id
+  database = aws_athena_database.research.id
+  query = "SELECT * FROM ${aws_athena_database.research.name} limit 10;"
+}
+
 # It would be awesome to use aws timestream, a dedicated time series database
 # however, data can only be inserted within the "active" window:
 # from (now - retention_period) until (now + injestion period)
