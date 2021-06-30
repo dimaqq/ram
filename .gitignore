@@ -1,0 +1,8 @@
+__pycache__
+.env
+.envrc
+.*.swp
+.terraform
+.terraform.lock.hcl
+.vscode
+.DS_Store
